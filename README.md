@@ -1,1 +1,1 @@
-Init RAG System
+Init RAG System for Final-Term
