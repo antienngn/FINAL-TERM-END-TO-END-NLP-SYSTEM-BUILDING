@@ -1,0 +1,721 @@
+# VNU/UET Knowledge Resource — Crawl Seeds
+# Auto-discovered từ https://vnu.edu.vn/ (2026-05-23)
+# Priority: high = must crawl, med = should crawl, low = optional
+
+# ─────────────────────────────────────────────────────────
+# DOMAIN: vnu.edu.vn (cổng chính)
+# ─────────────────────────────────────────────────────────
+
+vnu_main:
+  base_url: https://vnu.edu.vn
+  scope: ".*vnu\\.edu\\.vn.*"
+  rate_limit_sec: 1.0
+
+  # ── PRIORITY HIGH: Giới thiệu chung ──────────────────
+  high:
+    - path: /
+      tag: homepage
+    - path: /gioi-thieu/tong-quan/lich-su
+      tag: history
+    - path: /gioi-thieu/tong-quan/su-mang-tam-nhin
+      tag: mission
+    - path: /gioi-thieu/tong-quan/chien-luoc-phat-trien
+      tag: strategy
+    - path: /gioi-thieu/tong-quan/so-lieu-thong-ke
+      tag: stats
+    - path: /gioi-thieu/tong-quan/cac-co-so-cua-dhqghn
+      tag: campuses
+    - path: /gioi-thieu/tong-quan/thi-dua-khen-thuong
+      tag: awards
+
+    # Cơ cấu tổ chức
+    - path: /gioi-thieu/co-cau-to-chuc/so-do-to-chuc
+      tag: org_chart
+    - path: /gioi-thieu/co-cau-to-chuc/ban-giam-doc
+      tag: leadership
+    - path: /gioi-thieu/co-cau-to-chuc/hoi-dong-khoa-hoc-va-dao-tao
+      tag: academic_council
+    - path: /gioi-thieu/co-cau-to-chuc/cac-truong-dai-hoc-thanh-vien
+      tag: member_universities
+    - path: /gioi-thieu/co-cau-to-chuc/cac-truong-thuoc
+      tag: affiliated_schools
+    - path: /gioi-thieu/co-cau-to-chuc/cac-vien-nghien-cuu
+      tag: research_institutes
+    - path: /gioi-thieu/co-cau-to-chuc/van-ban-phap-quy
+      tag: legal_docs   # chứa PDF quy chế
+
+    # Đào tạo (toàn bộ)
+    - path: /dao-tao/gioi-thieu-chung
+      tag: training_overview
+    - path: /dao-tao/chuong-trinh-dao-tao-bac-dai-hoc
+      tag: undergrad_programs
+    - path: /dao-tao/chuong-trinh-dao-tao-thac-si
+      tag: master_programs
+    - path: /dao-tao/chuong-trinh-dao-tao-tien-si
+      tag: phd_programs
+    - path: /dao-tao/dao-tao-lien-ket
+      tag: joint_programs
+    - path: /dao-tao/so-lieu-thong-ke
+      tag: training_stats
+    - path: /dao-tao/van-ban-lien-quan
+      tag: training_regulations
+    - path: /dao-tao/ke-hoach-hoc-tap-va-giang-day
+      tag: academic_calendar
+    - path: /dao-tao/mau-van-bang
+      tag: degree_templates
+
+    # Tuyển sinh
+    - path: /cong-thong-tin-tuyen-sinh
+      tag: admissions_portal
+    - path: /tin-tuc-su-kien/tuyen-sinh
+      tag: admissions_news
+
+    # Văn bản & ấn phẩm
+    - path: /van-ban
+      tag: documents_archive
+    - path: /an-pham
+      tag: publications
+    - path: /an-pham/bao-cao-thuong-nien-dhqghn
+      tag: annual_report
+
+  # ── PRIORITY MEDIUM: KHCN, Hợp tác, Sinh viên ────────
+  med:
+    - path: /khoa-hoc-cong-nghe/gioi-thieu-chung
+    - path: /khoa-hoc-cong-nghe/chien-luoc-khcndmst-20212030
+    - path: /khoa-hoc-cong-nghe/he-thong-phong-thi-nghiem
+    - path: /khoa-hoc-cong-nghe/nhom-nghien-cuu
+    - path: /khoa-hoc-cong-nghe/van-ban-lien-quan
+
+    - path: /hop-tac-phat-trien/gioi-thieu-chung/loi-gioi-thieu
+    - path: /hop-tac-phat-trien/cac-doi-tac-trong-nuoc
+    - path: /hop-tac-phat-trien/cac-thoa-thuan-hop-tac-quoc-te
+
+    - path: /sinh-vien/gioi-thieu-chung
+    - path: /sinh-vien/hoc-bong/quy-dinh
+    - path: /sinh-vien/ho-tro-sinh-vien/ky-tuc-xa-sinh-vien
+    - path: /sinh-vien/cuu-sinh-vien
+
+    - path: /tin-tuc-su-kien
+    - path: /tin-tuc-su-kien/sinh-vien
+
+# ─────────────────────────────────────────────────────────
+# UET — Trường ĐH Công nghệ (TRỌNG TÂM assignment, crawl sâu)
+# ─────────────────────────────────────────────────────────
+
+uet:
+  base_url: https://uet.vnu.edu.vn
+  scope: ".*(uet\\.vnu\\.edu\\.vn|tuyensinh\\.uet\\.vnu\\.edu\\.vn|qac\\.uet\\.vnu\\.edu\\.vn).*"
+  rate_limit_sec: 1.5
+
+  # ── Giới thiệu & cơ cấu (high) ────────────────────────
+  high:
+    - path: /
+      tag: homepage
+    - path: /gioi-thieu/
+      tag: about
+    - path: /co-cau-to-chuc/
+      tag: org_structure
+    - path: /ban-giam-hieu/
+      tag: leadership
+    - path: /dang-uy/
+      tag: party_committee
+    - path: /hoi-dong-khoa-hoc-va-dao-tao/
+      tag: academic_council
+    - path: /chien-luoc-phat-trien/
+      tag: strategy
+    - path: /lien-he/
+      tag: contact
+
+    # 8 khoa/viện — RẤT quan trọng cho factual Q&A
+    - path: /khoa-cong-nghe-thong-tin/
+      tag: faculty_it
+    - path: /khoa-dien-tu-vien-thong/
+      tag: faculty_electronics
+    - path: /khoa-vat-ly-ky-thuat-va-cong-nghe-nano/
+      tag: faculty_physics_nano
+    - path: /khoa-co-hoc-ky-thuat-va-tu-dong-hoa/
+      tag: faculty_mechanics
+    - path: /khoa-cong-nghe-nong-nghiep/
+      tag: faculty_agritech
+    - path: /bo-mon-cong-nghe-xay-dung-giao-thong/
+      tag: dept_civil_eng
+    - path: /vien-cong-nghe-hang-khong-vu-tru-2/
+      tag: institute_aerospace
+    - path: /vien-tri-tue-nhan-tao/
+      tag: institute_ai
+
+    # Đào tạo
+    - path: /dao-tao/
+      tag: training_main
+    - path: /quy-dinh-dieu-kien-trinh-tu-thu-tuc-mo-nganh-dao-tao-trinh-do-dai-hoc/
+      tag: undergrad_regulation
+    - path: /quy-dinh-dieu-kien-trinh-tu-thu-tuc-mo-nganh-dao-tao-trinh-do-sau-dai-hoc/
+      tag: grad_regulation
+
+    # Tuyển sinh (cố định)
+    - path: /tuyen-sinh/
+      tag: admissions_main
+    - path: /category/tin-tuyen-sinh/
+      tag: admissions_news_listing
+
+    # Điểm chuẩn (factual data — assignment chắc chắn hỏi)
+    - path: /truong-dai-hoc-cong-nghe-cong-bo-diem-chuan-dai-hoc-chinh-quy-nam-2025/
+      tag: cutoff_2025
+    - path: /diem-trung-tuyen-vao-truong-dh-cong-nghe-dhqghn-nam-2024-theo-phuong-thuc-thpt/
+      tag: cutoff_2024
+    - path: /truong-dai-hoc-cong-nghe-dhqghn-ma-truong-qhi-tuyen-sinh-nam-2026-bac-dai-hoc-2/
+      tag: admissions_2026
+
+    # Nghiên cứu & sinh viên
+    - path: /nghien-cuu-doi-moi/
+      tag: research_main
+    - path: /doi-song-sinh-vien/
+      tag: student_life
+
+  # ── 6 phòng ban (medium) ──────────────────────────────
+  med:
+    - path: /phong-dao-tao/
+      tag: dept_training
+    - path: /phong-hanh-chinh-quan-tri-va-to-chuc-can-bo/
+      tag: dept_admin
+    - path: /phong-khoa-hoc-cong-nghe-va-hop-tac-phat-trien/
+      tag: dept_research_cooperation
+    - path: /phong-ke-hoach-tai-chinh/
+      tag: dept_finance
+    - path: /phong-cong-tac-sinh-vien/
+      tag: dept_student_affairs
+    - path: /trung-tam-dai-hoc-so/
+      tag: digital_university_center
+
+  # ── Subdomain liên quan (chỉ tạp chí — admissions & QAC tách riêng) ──
+  subdomains:
+    - url: https://jcsce.vnu.edu.vn/
+      name: Tạp chí CNTT & TT (UET journal)
+
+# ─────────────────────────────────────────────────────────
+# UET — Cổng tuyển sinh (tuyensinh.uet.vnu.edu.vn)
+# ─────────────────────────────────────────────────────────
+
+uet_admissions:
+  base_url: https://tuyensinh.uet.vnu.edu.vn
+  scope: ".*tuyensinh\\.uet\\.vnu\\.edu\\.vn.*"
+  rate_limit_sec: 1.5
+
+  high:
+    - path: /
+      tag: admissions_home
+    - path: /category/phuong-thuc-xet-tuyen/
+      tag: admission_methods
+    - path: /category/nganh-theo-khoa/
+      tag: programs_by_faculty
+    - path: /category/tin-tuyen-sinh/
+      tag: admissions_news
+    - path: /category/ban-nen-biet/
+      tag: must_know_info
+    - path: /category/tra-cuu/
+      tag: lookup_results
+    - path: /category/ket-qua-xet-tuyen/
+      tag: admission_results
+    - path: /category/tu-van-tuyen-sinh/
+      tag: admissions_consulting
+    - path: /?cat=9
+      tag: admissions_2026
+
+# ─────────────────────────────────────────────────────────
+# UET — Đảm bảo chất lượng giáo dục (qac.uet.vnu.edu.vn)
+# ─────────────────────────────────────────────────────────
+
+uet_qac:
+  base_url: https://qac.uet.vnu.edu.vn
+  scope: ".*qac\\.uet\\.vnu\\.edu\\.vn.*"
+  rate_limit_sec: 1.5
+
+  high:
+    - path: /
+      tag: qac_home
+    - path: /bai-viet/tin-tuc
+      tag: qac_news_listing
+    - path: /bai-viet/kiem-dinh-chat-luong
+      tag: accreditation_listing
+    - path: /bai-viet/xep-hang
+      tag: rankings_listing
+    - path: /bai-viet/cong-khai-csgd
+      tag: public_disclosure
+    - path: /survey
+      tag: surveys
+    - path: /doi-tac
+      tag: partners
+
+    # Bài viết evergreen có factual data — assignment có thể hỏi
+    - path: /post/truong-dai-hoc-cong-nghe-dai-hoc-quoc-gia-ha-noi-nhan-giay-chung-nhan-kiem-dinh-chat-luong-giao-duc
+      tag: cert_accreditation
+    - path: /post/ban-hanh-quy-dinh-moi-ve-kiem-dinh-chuong-trinh-dao-tao-cac-trinh-do-cua-giao-duc-dai-hoc
+      tag: new_accreditation_regulation
+    - path: /post/bang-xep-hang-qs-by-subject-2023-4-6-linh-vuc-cua-truong-dh-cong-nghe-tiep-tuc-duoc-xep-hang-1
+      tag: qs_ranking_2023
+    - path: /post/kiem-dinh-chat-luong-03
+      tag: the_wur_2024
+
+# ─────────────────────────────────────────────────────────
+# UET — Viện Trí tuệ Nhân tạo (Institute of AI)
+# 54 posts từ post-sitemap (lọc keyword 'tri-tue-nhan-tao')
+# Discovered 2026-05-24 via UET sitemap_index.xml
+# ─────────────────────────────────────────────────────────
+
+uet_ai_institute:
+  base_url: https://uet.vnu.edu.vn
+  rate_limit_sec: 1.5
+
+  high:
+    # ── ai_curriculum (10) ──
+    - path: /chuong-trinh-dao-tao-nganh-tri-tue-nhan-tao/
+      tag: ai_curriculum
+    - path: /chuong-trinh-dao-tao-nganh-tri-tue-nhan-tao-2/
+      tag: ai_curriculum
+    - path: /chuong-trinh-dao-tao-nganh-tri-tue-nhan-tao-3/
+      tag: ai_curriculum
+    - path: /chuong-trinh-dao-tao-nganh-tri-tue-nhan-tao-4/
+      tag: ai_curriculum
+    - path: /chuong-trinh-dao-tao-nganh-tri-tue-nhan-tao-5/
+      tag: ai_curriculum
+    - path: /chuong-trinh-dao-tao-nganh-tri-tue-nhan-tao-6/
+      tag: ai_curriculum
+    - path: /chuong-trinh-dao-tao-nganh-tri-tue-nhan-tao-7/
+      tag: ai_curriculum
+    - path: /chuong-trinh-dao-tao-nganh-tri-tue-nhan-tao-8/
+      tag: ai_curriculum
+    - path: /chuong-trinh-dao-tao-nganh-tri-tue-nhan-tao-9/
+      tag: ai_curriculum
+    - path: /chuong-trinh-dao-tao-nganh-tri-tue-nhan-tao-10/
+      tag: ai_curriculum
+
+    # ── ai_founding (2) ──
+    - path: /ra-mat-vien-tri-tue-nhan-tao-truc-thuoc-truong-dai-hoc-cong-nghe-dhqghn/
+      tag: ai_founding
+    - path: /truong-dai-hoc-cong-nghe-thanh-lap-vien-tri-tue-nhan-tao/
+      tag: ai_founding
+
+    # ── ai_leadership (3) ──
+    - path: /goc-nhin-voi-vtc-gs-ts-nguyen-thanh-thuy-co-hoi-tri-tue-nhan-tao-phat-trien-tai-viet-nam/
+      tag: ai_leadership
+    - path: /gs-ts-chu-duc-trinh-dao-tao-va-thu-hut-nhan-tai-cong-nghe-va-tri-tue-nhan-tao-tai-truong-dai-hoc-cong-nghe-dai-hoc-quoc-gia-ha-noi/
+      tag: ai_leadership
+    - path: /gs-ts-chu-duc-trinh-tri-tue-nhan-tao-mo-co-hoi-lon-cho-tre-vuon-ra-the-gioi/
+      tag: ai_leadership
+
+    # ── ai_product (5) ──
+    - path: /hanoiair-he-thong-du-bao-chat-luong-khong-khi-dau-tien-tai-viet-nam-ung-dung-tri-tue-nhan-tao/
+      tag: ai_product
+    - path: /nghien-cuu-ung-dung-tri-tue-nhan-tao-chan-doan-ung-thu-phoi-buoc-dot-pha-tu-hop-tac-truong-dai-hoc-cong-nghe-va-benh-vien-bach-mai/
+      tag: ai_product
+    - path: /nhom-sinh-vien-vien-tri-tue-nhan-tao-uet-vo-dich-factory-hacks-2025-voi-giai-phap-ai-diffusionad-ung-dung-cao-trong-san-xuat-cong-nghiep/
+      tag: ai_product
+    - path: /uet-fastest-xe-tu-hanh-gan-voi-tri-tue-nhan-tao/
+      tag: ai_product
+    - path: /vien-tri-tue-nhan-tao-dap-ung-nhu-cau-xa-hoi-ve-doi-ngu-nhan-luc-chat-luong-cao-va-nghien-cuu-ung-dung-trong-linh-vuc-tri-tue-nhan-tao/
+      tag: ai_product
+
+    # ── ai_olympic (6) ──
+    - path: /08-hoc-sinh-thpt-tham-du-tap-huan-ky-thi-olympic-tri-tue-nhan-tao-quoc-te-ioai-2025-tai-truong-dai-hoc-cong-nghe/
+      tag: ai_olympic
+    - path: /cuoc-thi-lap-trinh-iai-hackathon-2024-san-choi-hap-dan-ve-cong-nghe-thong-tin-va-tri-tue-nhan-tao/
+      tag: ai_olympic
+    - path: /hoc-sinh-da-nang-gianh-ngoi-vo-dich-olympic-tri-tue-nhan-tao-toan-quoc-danh-cho-hoc-sinh-thpt-lan-thu-nhat-voai-2025/
+      tag: ai_olympic
+    - path: /le-khai-mac-chung-ket-olympic-tri-tue-nhan-tao-danh-cho-hoc-sinh-toan-quoc-lan-thu-nhat-nam-2025-voai-2025/
+      tag: ai_olympic
+    - path: /thong-cao-bao-chi-chung-ket-olympic-tri-tue-nhan-tao-danh-cho-hoc-sinh-toan-quoc-lan-thu-nhat-nam-2025-voai-2025/
+      tag: ai_olympic
+    - path: /viet-nam-gianh-8-huy-chuong-olympic-tri-tue-nhan-tao-quoc-te-2025-chuc-tai-trung-quoc/
+      tag: ai_olympic
+
+    # ── ai_partnership (4) ──
+    - path: /hop-tac-chien-luoc-giua-vien-tri-tue-nhan-tao-truong-dai-hoc-cong-nghe-va-cong-ty-co-phan-oraichain-labs/
+      tag: ai_partnership
+    - path: /le-ky-ket-thoa-thuan-hop-tac-giua-vien-tri-tue-nhan-tao-truong-dai-hoc-cong-nghe-va-cong-ty-co-phan-smartosc/
+      tag: ai_partnership
+    - path: /tang-cuong-hop-tac-voi-phai-doan-den-tu-lien-bang-nga-trong-linh-vuc-tri-tue-nhan-tao/
+      tag: ai_partnership
+    - path: /thuc-day-hop-tac-voi-cong-ty-kepco-kdn-han-quoc-qua-cac-hoat-dong-phoi-hop-dao-tao-va-nghien-cuu-de-tai-ve-tri-tue-nhan-tao-hoc-may/
+      tag: ai_partnership
+
+    # ── ai_student (5) ──
+    - path: /19-sinh-vien-nganh-tri-tue-nhan-tao-tot-nghiep-som-mot-nam/
+      tag: ai_student
+    - path: /lop-tien-trinh-dao-tao-tich-cuc-tai-vien-tri-tue-nhan-tao-truong-dai-hoc-cong-nghe-hanh-trinh-pha-va-khang-dinh-ban-linh-sinh-vien-ai/
+      tag: ai_student
+    - path: /pham-thi-kim-hue-nu-sinh-nganh-tri-tue-nhan-tao-va-hanh-trinh-ba-nam-cham-toi-uoc-mo/
+      tag: ai_student
+    - path: /sinh-vien-nguyen-cong-hieu-tot-nghiep-som-nganh-tri-tue-nhan-tao-tao-co-hoi-de-pha/
+      tag: ai_student
+    - path: /trieu-tap-sinh-vien-tham-du-hoi-thao-quoc-te-doi-thoai-ve-quan-tri-trong-tri-tue-nhan-tao-ai/
+      tag: ai_student
+
+    # ── ai_event (5) ──
+    - path: /ai4life-hoi-nghi-tri-tue-nhan-tao-lan-dau-tien-duoc-chuc-tai-viet-nam/
+      tag: ai_event
+    - path: /ai4life-hoi-nghi-tri-tue-nhan-tao-nam-2018/
+      tag: ai_event
+    - path: /le-ra-mat-cau-lac-bo-tri-tue-nhan-tao-cau-lac-bo-thiet-ke-va-sang-tao/
+      tag: ai_event
+    - path: /nhieu-san-pham-ai-cua-truong-dai-hoc-cong-nghe-tham-gia-trien-lam-tai-ngay-hoi-tri-tue-nhan-tao-viet-nam-2025/
+      tag: ai_event
+    - path: /sap-dien-ra-hoi-thao-ai4edu-2024-tri-tue-nhan-tao-va-tuong-lai-giao-duc-dai-hoc/
+      tag: ai_event
+
+    # ── ai_news (14) ──
+    - path: /giang-vien-truong-dai-hoc-cong-nghe-tap-huan-ve-ung-dung-tri-tue-nhan-tao-ai-cho-can-bo-cac-cap-uy-va-co-quan-dang-tren-ca-nuoc/
+      tag: ai_news
+    - path: /hoi-nghi-quoc-te-ieee-lan-thu-12-ve-thong-tren-chip-nhung-da-loi-xu-ly-va-tri-tue-nhan-tao/
+      tag: ai_news
+    - path: /hoi-nghi-tri-tue-nhan-tao-lan-dau-tien-chuc-tai-viet-nam/
+      tag: ai_news
+    - path: /huong-dan-sv-k67-nganh-tri-tue-nhan-tao-tham-gia-tien-trinh-dao-tao-tich-cuc/
+      tag: ai_news
+    - path: /huong-dan-sv-k67-nganh-tri-tue-nhan-tao-tham-gia-tien-trinh-dao-tao-tich-cuc-2/
+      tag: ai_news
+    - path: /khung-chuong-trinh-dao-tao-chuan-bac-dai-nganh-tri-tue-nhan-tao/
+      tag: ai_news
+    - path: /nganh-tri-tue-nhan-tao-dan-dau-xu-huong-thoi-dai-co-hoi-vang-cho-gioi-tre-phat-trien-tuong-lai/
+      tag: ai_news
+    - path: /nhung-yeu-quan-trong-trong-chien-luoc-quoc-gia-ve-tri-tue-nhan-tao/
+      tag: ai_news
+    - path: /thong-tri-tue-nhan-tao-chuan-doan-va-tien-luong-benh-nhoi-mau-co-tim-dua-tren-sieu-tim-duoc-quy-vinif-tai-tro-nghien-cuu/
+      tag: ai_news
+    - path: /tri-tue-nhan-tao-se-duoc-thao-luan-tai-hoi-nghi-khoa-hoc-quoc-te-ieee/
+      tag: ai_news
+    - path: /tri-tue-nhan-tao-trong-thoi-dai-boi-canh-gioi-va-lien-voi-viet-nam/
+      tag: ai_news
+    - path: /tuyen-sinh-chuong-trinh-dao-tao-thu-2-nganh-tri-tue-nhan-tao-nam-hoc-2022-2023/
+      tag: ai_news
+    - path: /viet-nam-co-nhieu-loi-khoi-nghiep-trong-linh-vuc-tri-tue-nhan-tao/
+      tag: ai_news
+    - path: /vtv1-truong-dai-hoc-cong-nghe-nganh-cong-nghe-sinh-hoc-tich-hop-tri-tue-nhan-tao/
+      tag: ai_news
+
+# ─────────────────────────────────────────────────────────
+# UET — Chương trình đào tạo (38 ngành — VERSION MỚI NHẤT)
+# Chọn URL có lastmod gần nhất cho mỗi ngành (theo sitemap)
+# ─────────────────────────────────────────────────────────
+
+uet_curriculum:
+  base_url: https://uet.vnu.edu.vn
+  rate_limit_sec: 1.5
+
+  high:
+    - path: /chuong-trinh-dao-tao-nganh-co-ky-thuat-24/
+      tag: curriculum
+    - path: /chuong-trinh-dao-tao-nganh-cong-nghe-hang-khong-vu-tru-6/
+      tag: curriculum
+    - path: /chuong-trinh-dao-tao-nganh-cong-nghe-ky-thuat-co-dien-tu-3/
+      tag: curriculum
+    - path: /chuong-trinh-dao-tao-nganh-cong-nghe-ky-thuat-co-dien-tu-clc-tt23-4/
+      tag: curriculum
+    - path: /chuong-trinh-dao-tao-nganh-cong-nghe-ky-thuat-dien-tu-truyen-thong-4-2/
+      tag: curriculum
+    - path: /chuong-trinh-dao-tao-nganh-cong-nghe-ky-thuat-dien-tu-truyen-thong-chuong-trinh-chuan-quoc-te-4/
+      tag: curriculum
+    - path: /chuong-trinh-dao-tao-nganh-cong-nghe-ky-thuat-dien-tu-truyen-thong-clc-tt23-3/
+      tag: curriculum
+    - path: /chuong-trinh-dao-tao-nganh-cong-nghe-ky-thuat-dien-tu-vien-thong-7/
+      tag: curriculum
+    - path: /chuong-trinh-dao-tao-nganh-cong-nghe-ky-thuat-dien-tu-vien-thong-clc-tt23-5/
+      tag: curriculum
+    - path: /chuong-trinh-dao-tao-nganh-cong-nghe-ky-thuat-xay-dung-10/
+      tag: curriculum
+    - path: /chuong-trinh-dao-tao-nganh-cong-nghe-nong-nghiep-11/
+      tag: curriculum
+    - path: /chuong-trinh-dao-tao-nganh-cong-nghe-thong-tin-9/
+      tag: curriculum
+    - path: /chuong-trinh-dao-tao-nganh-cong-nghe-thong-tin-chat-luong-cao-10/
+      tag: curriculum
+    - path: /chuong-trinh-dao-tao-nganh-cong-nghe-thong-tin-dinh-huong-thi-truong-nhat-ban-10/
+      tag: curriculum
+    - path: /chuong-trinh-dao-tao-nganh-khoa-hoc-may-tinh-31/
+      tag: curriculum
+    - path: /chuong-trinh-dao-tao-nganh-khoa-hoc-may-tinh-chat-luong-cao-3/
+      tag: curriculum
+    - path: /chuong-trinh-dao-tao-nganh-khoa-hoc-may-tinh-chuong-trinh-chuan-quoc-te-4/
+      tag: curriculum
+    - path: /chuong-trinh-dao-tao-nganh-khoa-hoc-may-tinh-clc-tt23-3/
+      tag: curriculum
+    - path: /chuong-trinh-dao-tao-nganh-ky-thuat-co-dien-tu-10/
+      tag: curriculum
+    - path: /chuong-trinh-dao-tao-nganh-ky-thuat-dien-tu-20/
+      tag: curriculum
+    - path: /chuong-trinh-dao-tao-nganh-ky-thuat-dieu-khien-va-tu-dong-hoa-10/
+      tag: curriculum
+    - path: /chuong-trinh-dao-tao-nganh-ky-thuat-may-tinh-7/
+      tag: curriculum
+    - path: /chuong-trinh-dao-tao-nganh-ky-thuat-nang-luong-9/
+      tag: curriculum
+    - path: /chuong-trinh-dao-tao-nganh-ky-thuat-phan-mem-20/
+      tag: curriculum
+    - path: /chuong-trinh-dao-tao-nganh-ky-thuat-robot-7/
+      tag: curriculum
+    - path: /chuong-trinh-dao-tao-nganh-ky-thuat-vien-thong-20/
+      tag: curriculum
+    - path: /chuong-trinh-dao-tao-nganh-ky-thuat-xay-dung-14/
+      tag: curriculum
+    - path: /chuong-trinh-dao-tao-nganh-mang-may-tinh-va-truyen-thong-du-lieu-23/
+      tag: curriculum
+    - path: /chuong-trinh-dao-tao-nganh-mang-may-tinh-va-truyen-thong-du-lieu-chat-luong-cao-theo-thong-tu-23-3/
+      tag: curriculum
+    - path: /chuong-trinh-dao-tao-nganh-thiet-ke-cong-nghiep-va-hoa-8/
+      tag: curriculum
+    - path: /chuong-trinh-dao-tao-nganh-thong-thong-tin-7/
+      tag: curriculum
+    - path: /chuong-trinh-dao-tao-nganh-thong-thong-tin-chat-luong-cao-theo-thong-tu-23-3/
+      tag: curriculum
+    - path: /chuong-trinh-dao-tao-nganh-toan-thong-tin-10/
+      tag: curriculum
+    - path: /chuong-trinh-dao-tao-nganh-tri-tue-nhan-tao-4/
+      tag: curriculum
+    - path: /chuong-trinh-dao-tao-nganh-truyen-du-lieu-va-mang-may-tinh-3/
+      tag: curriculum
+    - path: /chuong-trinh-dao-tao-nganh-truyen-thong-va-mang-may-tinh-4/
+      tag: curriculum
+    - path: /chuong-trinh-dao-tao-nganh-vat-lieu-va-linh-kien-nano-20/
+      tag: curriculum
+    - path: /chuong-trinh-dao-tao-nganh-vat-ly-ky-thuat-7/
+      tag: curriculum
+
+# ─────────────────────────────────────────────────────────
+# UET — Học bổng (17 chương trình curated — evergreen)
+# ─────────────────────────────────────────────────────────
+
+uet_scholarship:
+  base_url: https://uet.vnu.edu.vn
+  rate_limit_sec: 1.5
+
+  high:
+    # UET's own scholarship
+    - path: /chuong-trinh-hoc-bong-k-t-nam-hoc-2025-2026/
+      tag: scholarship_uet
+    - path: /tong-hop-ve-hoc-bong-bac-sau-dai-hoc-tai-uet-nam-2021/
+      tag: scholarship_uet
+    - path: /hoc-bong-duy-tri-danh-cho-nghien-cuu-sinh-cua-truong-dhcn-nam-2025/
+      tag: scholarship_uet
+
+    # Samsung V-STT (chương trình thạc sĩ toàn phần ngành bán dẫn)
+    - path: /thong-bao-tuyen-sinh-chuong-trinh-hoc-bong-thac-si-toan-phan-v-stt-dinh-huong-cong-nghe-ban-dan/
+      tag: scholarship_v_stt
+    - path: /khoi-dong-chuong-trinh-hoc-bong-thac-sy-vnu-samsung-technology-track-tu-samsung-semiconductor/
+      tag: scholarship_v_stt
+    - path: /tuyen-sinh-hoc-bong-thac-si-toan-phan-v-stt-huong-toi-dao-tao-nguon-nhan-luc-chat-luong-cao-cho-nganh-cong-nghiep-ban-dan-toan-cau/
+      tag: scholarship_v_stt
+    - path: /dan-dat-tuong-lai-cong-nghe-ban-dan-voi-hoc-bong-thac-si-toan-phan-vnu-samsung-technology-track-v-stt/
+      tag: scholarship_v_stt
+
+    # Hợp tác quốc tế
+    - path: /chuong-trinh-hoc-bong-thac-si-tai-truong-dai-hoc-korea-han-quoc-do-quy-pony-chung-tai-tro-nam-2026/
+      tag: scholarship_intl
+    - path: /hoc-bong-dao-tao-tien-si-hop-tac-giua-truong-dai-hoc-cong-nghe-uet-va-truong-dai-hoc-cong-nghe-sydney-uts/
+      tag: scholarship_intl
+    - path: /chuong-trinh-hoc-bong-discovernus-ky-mua-thu-nam-hoc-2026-2027/
+      tag: scholarship_intl
+    - path: /chuong-trinh-hoc-bong-theo-dien-hiep-dinh-giua-viet-nam-va-hung-ga-ri-nam-2026/
+      tag: scholarship_intl
+    - path: /chuong-trinh-hoc-bong-theo-dien-hiep-dinh-giua-viet-nam-va-trung-quoc-nam-2026/
+      tag: scholarship_intl
+
+    # Doanh nghiệp tài trợ
+    - path: /thong-tin-hoc-bong-vingroup/
+      tag: scholarship_corporate
+    - path: /hoc-bong-toshiba-nhat-ban-nam-hoc-2025-2026/
+      tag: scholarship_corporate
+    - path: /hoc-bong-mb-nam-hoc-2025-2026/
+      tag: scholarship_corporate
+    - path: /tang-hoc-bong-viettel-nam-hoc-2025-2026-cho-hoc-vien-cao-hoc/
+      tag: scholarship_corporate
+    - path: /chuong-trinh-hoc-bong-huyndai-motor-chung-mong-koo-nam-hoc-2026-2027/
+      tag: scholarship_corporate
+    - path: /chuong-trinh-hoc-bong-digiworld-uom-mam-xanh-dao-tao-ky-su-lap-trinh/
+      tag: scholarship_corporate
+    - path: /le-trao-hoc-bong-nguyen-truong-to-nam-hoc-2025-2026/
+      tag: scholarship_corporate
+
+# ─────────────────────────────────────────────────────────
+# UET — Học phí (16 bài curated — định mức + quy định)
+# ─────────────────────────────────────────────────────────
+
+uet_tuition:
+  base_url: https://uet.vnu.edu.vn
+  rate_limit_sec: 1.5
+
+  high:
+    # Định mức học phí (rate sheets — VÀNG cho factual Q&A)
+    - path: /dinh-muc-hoc-phi-cac-chuong-trinh-dao-tao-nam-hoc-2025-2026/
+      tag: tuition_rate
+    - path: /dinh-muc-hoc-phi-dao-tao-dai-hoc-nam-hoc-2024-2025/
+      tag: tuition_rate
+    - path: /dinh-muc-hoc-phi-dao-tao-sau-dai-hoc-nam-hoc-2024-2025/
+      tag: tuition_rate
+    - path: /dinh-muc-hoc-phi-nam-hoc-2022-2023/
+      tag: tuition_rate
+    - path: /dieu-chinh-dinh-muc-hoc-phi-dao-tao-dai-hoc-nam-hoc-2022-2023/
+      tag: tuition_rate
+    - path: /dieu-chinh-dinh-muc-hoc-phi-dao-tao-sau-dai-hoc-nam-hoc-2022-2023/
+      tag: tuition_rate
+    - path: /quy-dinh-dinh-muc-hoc-phi-dao-tao-dai-hoc-sau-dai-hoc-nam-2018-2019/
+      tag: tuition_rate
+
+    # Quy định / chính sách
+    - path: /ban-hanh-quy-dinh-ve-viec-nop-hoc-phi-tai-truong-dai-hoc-cong-nghe/
+      tag: tuition_regulation
+    - path: /quy-dinh-thu-hoc-phi-voi-nguoi-hoc-xin-tam-ngung-hoc-tap-trong-hoc-ki-va-nguoi-hoc-hoan-thanh-chuong-trinh-dao-tao-truoc-han/
+      tag: tuition_regulation
+    - path: /quy-dinh-dinh-muc-hoc-phi-dao-tao-sau-dai-hoc-trong-thoi-gian-keo-dai/
+      tag: tuition_regulation
+    - path: /quy-dinh-ve-co-che-thu-quan-ly-hoc-phi-doi-voi-co-giao-duc-thuoc-thong-giao-duc-quoc-dan-va-chinh-sach-mien-giam-hoc-phi-ho-tro-chi-phi-hoc-tap-gia-dich-vu-trong-linh-vuc-giao-duc-dao-tao/
+      tag: tuition_regulation
+    - path: /quy-dinh-ve-giam-hoc-phi-doi-voi-cac-hoc-phan-ngoai-ngu-va-cac-hoc-phan-duoc-mien-hoc-va-cong-nhan-diem-cua-chuong-trinh-chat-luong-cao-tt23/
+      tag: tuition_regulation
+
+    # Chính sách miễn giảm / hỗ trợ
+    - path: /che-mien-hoc-phi-va-cap-ho-tro-sinh-hoat-phi-voi-cac-hvchncs-tu-khoa-qh-2025/
+      tag: tuition_exemption
+    - path: /truong-dai-hoc-cong-nghe-dhqghn-dot-pha-trong-dao-tao-sau-dai-hoc-mien-hoc-phi-cap-sinh-hoat-phi-hang-thang-cho-hoc-vien-va-nghien-cuu-sinh/
+      tag: tuition_exemption
+    - path: /truong-dh-cong-nghe-lay-kinh-phi-tu-nguon-nao-de-mien-hoc-phi-cho-hoc-vien-ncs/
+      tag: tuition_exemption
+    - path: /vtv1-vi-sao-hoc-phi-dai-hoc-tiep-tuc-tang-trong-2-nam-toi/
+      tag: tuition_news
+
+# ─────────────────────────────────────────────────────────
+# PDF DOCUMENTS — Quy chế, văn bản pháp quy (22 PDF)
+# Tìm thấy từ: /khoa-hoc-cong-nghe/van-ban-lien-quan
+#           và /dao-tao/van-ban-lien-quan
+# ─────────────────────────────────────────────────────────
+
+pdf_documents:
+  rate_limit_sec: 2.0
+  scope: ".*vnu\\.edu\\.vn/upload/.*\\.(pdf|PDF)$"
+
+  high:
+    # ── Quy chế đào tạo Tiến sĩ (BẮT BUỘC theo PDF assignment) ──
+    - url: http://vnu.edu.vn/upload/2011/06/10436/tt1170_10-2009-TT-BGDDT.pdf
+      tag: regulation_phd
+      doc_id: "10/2009/TT-BGDĐT"
+      name: Quy chế đào tạo Tiến sĩ
+
+    # ── Văn bản nội bộ ĐHQGHN — Khoa học công nghệ (15 PDF) ──
+    - url: https://vnu.edu.vn/upload/2023/06/33128/file/I_3_%201039%20Ch%E1%BB%89%20s%E1%BB%91%20%C4%91%E1%BB%95i%20m%E1%BB%9Bi%20s%C3%A1ng%20t%E1%BA%A1o.pdf
+      tag: regulation_internal
+      doc_id: "1039/QĐ-ĐHQGHN"
+      name: Chỉ số đổi mới sáng tạo
+    - url: https://vnu.edu.vn/upload/2023/06/33128/file/I_4_%20581%20HD%20t%E1%BA%A1m%20th%E1%BB%9D%20th%C3%A0nh%20l%E1%BA%ADp%20doanh%20nghi%E1%BB%87p%20trong%20%C4%90HQGHN.pdf
+      tag: regulation_internal
+      doc_id: "581/HD-ĐHQGHN"
+      name: HD thành lập doanh nghiệp trong ĐHQGHN
+    - url: https://vnu.edu.vn/upload/2023/06/33128/file/I_7_%20524%20Quyet%20dinh%20phe%20duyet%20KH%20C%C4%90S.pdf
+      tag: regulation_internal
+      doc_id: "524/QĐ-ĐHQGHN"
+      name: Kế hoạch ứng dụng CNTT
+    - url: https://vnu.edu.vn/upload/2023/06/33128/file/I_18_%203888%20CN,%20NV%20c%E1%BB%A7a%20VP%20v%C3%A0%20c%C3%A1c%20ban%20ch%E1%BB%A9c%20n%C4%83ng.pdf
+      tag: regulation_internal
+      doc_id: "3888/QĐ-ĐHQGHN"
+      name: Quy định chức năng nhiệm vụ VP và ban
+    - url: https://vnu.edu.vn/upload/2023/06/33128/file/I_9_%203381%20H%E1%BB%97%20tr%E1%BB%A3%20c%C3%B4ng%20b%E1%BB%91%20Qu%E1%BB%91c%20t%E1%BA%BF%20%C4%91%E1%BB%91i%20v%E1%BB%9Bi%20NCS%20v%C3%A0%20nh%C3%A0%20KH.pdf
+      tag: regulation_internal
+      doc_id: "3381/QĐ-ĐHQGHN"
+      name: Hỗ trợ công bố Quốc tế cho NCS
+    - url: https://vnu.edu.vn/upload/2023/06/33128/file/I_11_%20633%20-%20H%C6%B0%E1%BB%9Bng%20d%E1%BA%ABn%20th%E1%BB%B1c%20hi%E1%BB%87n%20N%C4%90%2099.pdf
+      tag: regulation_internal
+      doc_id: "633/QĐ-ĐHQGHN"
+      name: HD thực hiện NĐ 99/2014
+    - url: https://vnu.edu.vn/upload/2023/06/33128/file/I_6_%20286%20Chi%E1%BA%BFn%20l%C6%B0%E1%BB%A3c%20KHCN%20v%C3%A0%20%C4%90MST.pdf
+      tag: regulation_internal
+      doc_id: "286/QĐ-ĐHQGHN"
+      name: Chiến lược KHCN & ĐMST 2021-2030
+    - url: https://vnu.edu.vn/upload/2023/06/33128/file/I_10_%203838_2021%20v%E1%BB%81%20PTNT%C4%90,%20TTNCT%C4%90%20c%E1%BA%A5p%20%C4%90HQGHN.pdf
+      tag: regulation_internal
+      doc_id: "3828/QĐ-ĐHQGHN"
+      name: Quy định PTN & trung tâm NC trọng điểm
+    - url: https://vnu.edu.vn/upload/2023/06/33128/file/I_8_%203416%20%20Quy%20%C4%91%E1%BB%8Bnh%20qu%E1%BA%A3n%20l%C3%BD%20TSTT%20%E1%BB%9F%20%C4%90HQGHN.pdf
+      tag: regulation_internal
+      doc_id: "3416/QĐ-ĐHQGHN"
+      name: Quản lý tài sản trí tuệ
+    - url: https://vnu.edu.vn/upload/2023/06/33128/file/I_5_%203273_Huong-dan-phat-trien-va-che-do-uu-dai-NNCM.pdf
+      tag: regulation_internal
+      doc_id: "3273/QĐ-ĐHQGHN"
+      name: Phát triển nhóm nghiên cứu mạnh
+    - url: https://vnu.edu.vn/upload/2023/06/33128/file/I_12%203009_HD%20Nhiem-vu-Quoc-chi.pdf
+      tag: regulation_internal
+      doc_id: "3009/QĐ-ĐHQGHN"
+      name: Kiểm tra tiến độ Nhiệm vụ Quốc Chí
+    - url: https://vnu.edu.vn/upload/2023/06/33128/file/I_13_%201650%20Gi%E1%BA%A3i%20th%C6%B0%E1%BB%9Fng%20%C4%90HQGHN%20v%E1%BB%81%20KHCN.pdf
+      tag: regulation_internal
+      doc_id: "1650/QĐ-ĐHQGHN"
+      name: Giải thưởng ĐHQGHN về KHCN
+    - url: https://vnu.edu.vn/upload/2023/06/33128/file/I_14_%2070-HD-ho-tro-cong-bo-quoc-te-va-dang-ky-quyen-so-huu-tri-tue.PDF
+      tag: regulation_internal
+      doc_id: "70/HD-ĐHQGHN"
+      name: Hỗ trợ công bố quốc tế và SHTT
+    - url: https://vnu.edu.vn/upload/2023/06/33128/file/I_15_%202970%20Quy-dinh-to-chuc-khen-thuong-NCKH-SV.PDF
+      tag: regulation_internal
+      doc_id: "2970/QĐ-ĐHQGHN"
+      name: Khen thưởng NCKH sinh viên
+    - url: https://vnu.edu.vn/upload/2023/06/33128/file/I_16%20286_QD-DHQGHN.pdf
+      tag: regulation_internal
+      doc_id: "286/QĐ-ĐHQGHN-2015"
+      name: Quản lý hoạt động KHCN (2015)
+
+    # ── Văn bản KHCN nhà nước (6 PDF) ──
+    - url: https://vnu.edu.vn/upload/2023/06/33128/file/II_7_%20Lu%E1%BA%ADt%20KHCN29.pdf
+      tag: regulation_national
+      doc_id: "29/2013/QH13"
+      name: Luật Khoa học và Công nghệ
+    - url: https://vnu.edu.vn/upload/2023/06/33128/file/II_1_%20TT03_2023.pdf
+      tag: regulation_national
+      doc_id: "03/2023/TT-BTC"
+      name: TT lập dự toán quản lý kinh phí KHCN
+    - url: https://vnu.edu.vn/upload/2023/06/33128/file/II_2_%20N%C4%90%20109.pdf
+      tag: regulation_national
+      doc_id: "109/2022/NĐ-CP"
+      name: NĐ hoạt động KHCN đại học
+    - url: https://vnu.edu.vn/upload/2023/06/33128/file/II_4_%201694.pdf
+      tag: regulation_national
+      doc_id: "1694/QĐ-BTC"
+      name: Danh mục KHCN cấp bộ
+    - url: https://vnu.edu.vn/upload/2023/06/33128/file/II_3_%20TT08.pdf
+      tag: regulation_national
+      doc_id: "08/2017/TT-BKHCN"
+      name: TT tuyển chọn thực hiện KHCN
+    - url: https://vnu.edu.vn/upload/2023/06/33128/file/II_5_%20TT03.pdf
+      tag: regulation_national
+      doc_id: "03/2017/TT-BKHCN"
+      name: TT sửa đổi bổ sung TT 07/2014
+
+# ─────────────────────────────────────────────────────────
+# WIKIPEDIA (chỉ VNU + UET — theo scope user 2026-05-24)
+# ─────────────────────────────────────────────────────────
+
+wikipedia:
+  rate_limit_sec: 0.5
+  high:
+    - url: https://vi.wikipedia.org/wiki/Đại_học_Quốc_gia_Hà_Nội
+      name: VNU Wikipedia (VI)
+    - url: https://en.wikipedia.org/wiki/Vietnam_National_University,_Hanoi
+      name: VNU Wikipedia (EN)
+    - url: https://vi.wikipedia.org/wiki/Trường_Đại_học_Công_nghệ,_Đại_học_Quốc_gia_Hà_Nội
+      name: UET Wikipedia
+
+# ─────────────────────────────────────────────────────────
+# CRAWL CONFIG (chung)
+# ─────────────────────────────────────────────────────────
+
+config:
+  user_agent: "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) RAG-Research-Bot/1.0"
+  timeout_sec: 15
+  max_retries: 3
+  max_depth: 1            # Từ mỗi seed, follow link 1 cấp
+  output_dir: data/raw
+  output_format: jsonl
+  follow_pdf: true        # Tự động tải PDF nếu gặp
+  pdf_size_limit_mb: 50
+  blacklist_patterns:     # KHÔNG crawl
+    - "/login"
+    - "/admin"
+    - "\\?print=1"
+    - "\\.(jpg|png|gif|mp4|zip)$"
