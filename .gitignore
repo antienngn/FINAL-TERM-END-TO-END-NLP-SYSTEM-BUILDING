@@ -32,21 +32,20 @@ Thumbs.db
 *.log
 *.log.jsonl
 
-# Project — intermediate files (regenerable)
-data/raw/                # crawled JSONL — re-crawl với scrape_web.py
-data/chunks.jsonl        # chunked text — re-run chunk_docs.py
+# Project — intermediate files (push được qua LFS nếu cần)
+# Bỏ comment dưới nếu muốn KHÔNG push:
+data/raw/
+data/chunks.jsonl
 data/qa_draft.jsonl
 data/qa_reviewed.jsonl
-data/qa_reviewed_*.jsonl
 data/qa_dropped.jsonl
-data/qa_batches/         # batch prompts cho Claude
-data/qa_responses/       # response từ Claude
-
-# Project — vector store (~31MB, rebuild được)
+data/qa_batches/
+data/qa_responses/
 indexing/chroma_db/
-
-# Project — experiment debug logs (large)
 system_outputs/exp_*.log.jsonl
+
+# Backup files
+data/qa_reviewed_*backup*.jsonl
 
 # HuggingFace cache
 .cache/
