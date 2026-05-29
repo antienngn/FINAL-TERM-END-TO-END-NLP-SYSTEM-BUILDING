@@ -44,8 +44,18 @@ data/qa_responses/
 indexing/chroma_db/
 system_outputs/exp_*.log.jsonl
 
-# Backup files
+# Backup files / intermediate snapshots
 data/qa_reviewed_*backup*.jsonl
+data/qa_reviewed_before_*.jsonl
+data/qa_reviewed_v*.jsonl
+
+# Manual review progress (regenerable per session)
+data/.qa_review_progress.json
+
+# Assignment-only files (giữ private, không push lên repo public)
+ASSIGNMENT 2 End-to-end-NLP-System-Building update (1).pdf
+ASSIGNMENT*.pdf
+assignment2_task_list.md
 
 # HuggingFace cache
 .cache/
