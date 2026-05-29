@@ -1,1 +1,0 @@
-#Generate QA data for RAG model
